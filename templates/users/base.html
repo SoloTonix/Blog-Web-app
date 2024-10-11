@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: url('{% static 'posts/images/art.jpg' %}'); 
+        }
+
+        .card{
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .card-body{
+            padding: 2rem;
+        }
+        
+        .form-control{
+            border-radius: 10px;
+        }
+
+        .btn{
+            border-radius:10px;
+        }
+
+    </style>   
+</head>
+    <!--Nav Bar-->
+    {% include 'navbar.html' %}
+    <!--Nav Bar-->
+
+
+
+    <body>
+        <section style="back">
+                        <!--Messages-->
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible mx-auto mt-2 show" style="width: 90vh;" role="alert">
+                            <p class="mx-auto lead">{{message}}</p>
+                            <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <!--Messages-->
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                {% block content %}
+                                <h3 class="text-center mb-4">Login</h3>
+                                    <form action="">
+                                        <div class="form-group mt-4">
+                                            
+                                            <input type="text" class="form-control" name="username" placeholder="Enter username">
+                                        </div>
+    
+                                        <div class="form-group mt-4">
+                                            
+                                            <input type="text" class="form-control" name="password" placeholder="Enter password">
+                                        </div>
+    
+                                        <div class="form-group mt-4">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="remember-me">
+                                                <label for="remember-me">Remember me</label>
+                                            </div>
+                                        </div>
+    
+                                        <button type="submit" class="mt-4 btn-primary btn-block">sign in</button>
+                                    </form>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <footer clss="footer-dark" style ="color:white;text-align:center;padding :10px;margin-top :50 px;">
+    &copy;2023ECommerceStore.Allrightsreserved.</footer >
+</html>
