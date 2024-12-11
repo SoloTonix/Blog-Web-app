@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Hero Section-->
+<section class="hero" style="background-image: url('{% static 'posts/images/art.jpg' %}'); background-repeat: no-repeat; background-size: cover;background-position: center ;">
+    <div class="container">
+        <h1 class="display-4 text-light">Welcome  <span class="text-dark">To</span> <span class="text-success">Ama ebo</span></h1>
+        <p class="lead text-success">A place to share knowledge and insights</p>
+        <button class="btn btn-primary">Read More</button>
+    </div>
+</section>
+
+<!--Blog Posts-->
+<section class="blog-posts" >
+    <div class="container">
+        <h2 class="section-title" style="text-decoration: underline;">Latests</h2>
+        <hr>
+        
+
+        <div class="row">
+            
+            {% for latest in latests %}
+            <div class="col-md-4 mt-3" >
+                <div class="card" style="height: 250px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{latest.title}}</h5>
+                        <p class="card-text ">{{latest.created|timesince}}</p>
+                        <p class="card-text">{{latest.body|truncatewords:20}}</p>
+                        <a href="{% url 'detail' latest.pk %}" class="btn btn-outline-primary">Read More</a>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <hr>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        {% for post in posts %}
+        <div class="row mt-2">
+            <h3><a href="{% url 'detail' post.pk %}" class="text-dark py-3">{{post.title}}</a></h3>
+            <p class="text-muted">posted on {{post.created}}, by {{post.author.username}}</p>
+            <p>{{post.body|truncatewords:30}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
