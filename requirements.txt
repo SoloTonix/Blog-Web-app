@@ -1,4 +1,4 @@
-Django>=5.0,<6.0
+Django>=4.0
 django-widget-tweaks
 Pillow>=8.0.0
 gunicorn
